@@ -57,28 +57,25 @@ Now, the Stack becomes empty, which means we have visited all the nodes, and our
 <h4>PROGRAM: </h4>
 
 ```
-from collections import deque
 from collections import defaultdict
-def dfs(graph,start,visited,path):
-    path.append(start)
-    visited[start]=True
-    for neighbour in graph[start]:
-        if visited[neighbour]==False:
+def dfs(graph,node,visited,path):
+    visited[node]=True
+    path.append(node)
+    for neighbour in graph[node]:
+        if not visited[neighbour]:
             dfs(graph,neighbour,visited,path)
-            visited[neighbour]=True
     return path
 graph=defaultdict(list)
 n,e=map(int,input().split())
-for i in range(e):
-    u,v=map(str,input().split())
+for _ in range(e):
+    u,v=input().split()
     graph[u].append(v)
     graph[v].append(u)
-#print(graph)
 start=input()
 visited=defaultdict(bool)
 path=[]
-traversedpath=dfs(graph,start,visited,path)
-print(traversedpath)
+print(dfs(graph,start,visited,path))
+
 ```
 
 
@@ -119,7 +116,8 @@ F H <BR>
 
 <H4>OUTPUT: </H4>
 
-![Screenshot 2025-03-24 093718](https://github.com/user-attachments/assets/a87fca9d-e624-44b7-b0db-61c89f6be8c2)
+<img width="679" height="486" alt="Screenshot 2026-02-09 144706" src="https://github.com/user-attachments/assets/bbc59d5e-b212-4b40-8349-e50912d28f0f" />
+
 
 <hr>
 <h3>Result:</h3>
